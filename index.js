@@ -275,106 +275,18 @@ function transferWaitors(data) {
 
 console.log(transferWaitors(restorantData));
 
-// 19.12.22
+// Рекурсия 
 
-const shoppingMallDat = {
-    shops: [
-        {
-            width: 10,
-            length: 5
-        },
-        {
-            width: 15,
-            length: 7
-        },
-        {
-            width: 20,
-            length: 5
-        },
-        {
-            width: 8,
-            length: 10
-        }
-    ],
-    height: 5,
-    moneyPer1m3: 30,
-    budget: 50000
-};
-
-function isBudgetEnough(data) {
-    let m = [];
-
-    data.shops.forEach((i) => {
-        let n = [];
-        for (let key in i) {
-            n.push(i[key]);
-        }
-        m.push(n.reduce((acc, rec) => acc * rec));
-    });
-    
-    let area = data.height * (m.reduce((acc, rec) => acc + rec));
-
-    console.log(area);
-
-    if ((area * data.moneyPer1m3) < data.budget) {
-        return 'Бюджета достаточно';
+function pow(x,n) {
+    if (n === 1) {
+        return x;
     } else {
-        return 'Бюджета недостаточно';
+        return x * pow(x, n - 1);
     }
 }
 
-console.log(isBudgetEnough(shoppingMallData));
-
-const restorantDat = {
-    menu: [
-        {
-            name: 'Salad Caesar',
-            price: '14$'
-        },
-        {
-            name: 'Pizza Diavola',
-            price: '9$'
-        },
-        {
-            name: 'Beefsteak',
-            price: '17$'
-        },
-        {
-            name: 'Napoleon',
-            price: '7$'
-        }
-    ],
-    waitors: [
-        {name: 'Alice', age: 22}, {name: 'John', age: 24}
-    ],
-    averageLunchPrice: '20$',
-    openNow: true
-};
-
-function isOpen(prop) {
-    let answer = '';
-    prop ? answer = 'Открыто' : answer = 'Закрыто';
-
-    return answer;
-}
-
-console.log(isOpen(restorantData.openNow));
-
-function isAverageLunchPriceTrue(fDish, sDish, average) {
-    if (Number(fDish.price.slice(0, -1)) + Number(sDish.price.slice(0, -1)) < average.slice(0, -1)) {
-        return 'Цена ниже средней';
-    } else {
-        return 'Цена выше средней';
-    }
-}
-
-console.log(isAverageLunchPriceTrue(restorantData.menu[0], restorantData.menu[1], restorantData.averageLunchPrice));
-
-function transferWaitors(data) {
-    const copy = Object.create(data);
-
-    copy.waitors = [{name: 'Mike', age: 32}];
-    return copy;
-}
-
-console.log(transferWaitors(restorantData));
+console.log(pow(2,1));
+console.log(pow(2,2));
+console.log(pow(2,3));
+console.log(pow(2,4));
+console.log(pow(2,5));
