@@ -290,3 +290,57 @@ console.log(pow(2,2));
 console.log(pow(2,3));
 console.log(pow(2,4));
 console.log(pow(2,5));
+
+// n! с проверкой на отрицательные значения
+
+ function factorial(x) {
+    if (Number.isInteger(x) && typeof(x) === 'number') {
+        if (x <= 0) {
+            return 1;
+        } else if (x === 1) {
+            return x;
+        } else {
+            return x * (factorial (x-1));
+        }
+    } else {
+        return 'Error!';
+    }
+ }
+
+ console.log(factorial(5));
+
+ // Разбить массив на группы по 3
+
+ const students = ['Peter', 'Andrew', 'Ann', 'Mark', 'Josh', 'Sandra', 'Cris', 'Bernard', 'Takesi', 'Sam'];
+
+function sortStudentsByGroups(arr) {
+    arr.sort();
+
+    let obj = {};
+    let str ='Оставшиеся студенты:';
+    let arrGroup = [];
+    let i = 1;
+
+    while (arr.length > 0) {
+
+        if (arr.length >= 3) {
+            let newGroup = arr.splice(0, 3);
+
+            obj[i] = newGroup;
+        } else if (arr.length < 3) {
+            let newStr = arr.splice(0).join(', ');
+
+            obj[i] = str + ' ' + newStr;
+        }
+
+        i++;
+    }
+
+    for (let key in obj) {
+        arrGroup.push(obj[key]);
+    }
+
+    return arrGroup;
+}
+
+console.log(sortStudentsByGroups(students));
