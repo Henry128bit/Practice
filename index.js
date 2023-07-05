@@ -32,7 +32,7 @@ function getCoupeNumber(seatNumber) {
 
 console.log(getCoupeNumber(1));
 
-// 3 Принимает минуты, вохвразает строку с часами
+// 3 Принимает минуты, возвращает строку с часами
 
 function getTimeFromMinutes(min) {
     if (typeof(min) === 'number' && min >= 0 && Number.isInteger(min) === true) {
@@ -347,7 +347,7 @@ console.log(sortStudentsByGroups(students));
 
 // Посчитать кол-во страниц
 
-function amountOfPages(summary){
+function amountOfPages(summary) {
     let result = '';
     let n = 0;
 
@@ -363,3 +363,71 @@ function amountOfPages(summary){
 }
 
 console.log(amountOfPages(234));
+
+// 5 Задача с собеседования.
+
+// Написать функцию sostavChisla(massivChisel: number[], chislo: number), которая бы находила 
+// все возможные комбинации чисел из massivChisel, сумма которых равна chislo. При этом:
+// 1) massivChisel содержит, только уникальные положительные числа (> 0)
+// 2) в комбинации не должно быть повторений чисел
+// 3) все комбинации должны быть уникальными
+
+function checkUniquePositiveNumbers(array) {
+    const uniqueNumbers = [];
+    
+    array.forEach((number) => {
+      if (number > 0 && !uniqueNumbers.includes(number)) {
+        uniqueNumbers.push(number);
+      } else {
+        console.log("Неверный формат данных")
+        return false;
+      }
+    });
+  }
+
+  const massiv = [7, 8, 3, 4, 5, 6, 1, 2];
+
+  function sostavChisla(massivChisel, chislo) {
+    let chek = checkUniquePositiveNumbers(massivChisel);
+
+    if (chek) {const result = [];
+
+        function backtrack(combination, start) {
+          const sum = combination.reduce((acc, curr) => acc + curr, 0);
+      
+          if (sum === chislo) {
+            result.push([...combination]);
+          }
+      
+          if (sum > chislo) {
+            return;
+          }
+      
+          for (let i = start; i < massivChisel.length; i++) {
+            combination.push(massivChisel[i]);
+            backtrack(combination, i + 1);
+            combination.pop();
+          }
+        }
+      
+        backtrack([], 0);
+      
+        return result;}
+	
+}
+
+console.log(sostavChisla(massiv, 15));
+
+
+
+
+const arr1 = [7, 8, 3, 4, 5, 6, 1, 2];
+
+function sostavChisla(massivChisel, chislo) {
+    const uniqueNumbers = [];
+    // проверка массива на уникальность и > 0
+
+    // рекурсия с reduce()
+
+    // new Set для исклбчения повторений
+}
