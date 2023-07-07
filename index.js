@@ -421,13 +421,38 @@ console.log(sostavChisla(massiv, 15));
 
 
 
-const arr1 = [7, 8, 3, 4, 5, 6, 1, 2];
+const arr1 = [7, 8, 3, 4, 5, 6, 1, 2, 2];
+
+function checkUniqueNumbers(array) {
+    return new Set(array).size !== array.length;
+}
+
+function checkPositiveNumber(array) {
+    array.forEach(number => {
+        if (number < 0) {
+            return false
+        } else {
+            return true
+        }
+    })
+}
 
 function sostavChisla(massivChisel, chislo) {
-    const uniqueNumbers = [];
-    // проверка массива на уникальность и > 0
+    if (checkUniqueNumbers(massivChisel) && checkPositiveNumber(massivChisel)) {
+        // console.log("Неверный формат данных");
+        console.log(checkUniqueNumbers(massivChisel));
+        console.log(checkPositiveNumber(massivChisel));
+        
+    }
+    else {
+        // console.log("It's ok");
+        console.log(checkUniqueNumbers(massivChisel));
+        console.log(checkPositiveNumber(massivChisel));
+    }
 
     // рекурсия с reduce()
 
-    // new Set для исклбчения повторений
+    // new Set для исключения повторений
 }
+
+sostavChisla(arr1);
